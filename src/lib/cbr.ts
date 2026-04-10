@@ -7,7 +7,7 @@ export async function extractCbr(
 ): Promise<Page[]> {
   const { createExtractorFromData } = await import("node-unrar-js");
 
-  const wasmResponse = await fetch("/unrar.wasm");
+  const wasmResponse = await fetch(`${import.meta.env.BASE_URL}unrar.wasm`);
   const wasmBinary = await wasmResponse.arrayBuffer();
 
   const extractor = await createExtractorFromData({ data: buffer, wasmBinary });
